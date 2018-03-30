@@ -56,9 +56,7 @@ public class Searcher {
 		}
 
 		int count = 0;
-		for (final long key : filesWithSizes.keySet()) {
-			final List<File> fileList = filesWithSizes.get(key);
-
+		for (final List<File> fileList : filesWithSizes.values()) {
 			for (final File file : fileList) {
 				fileLists.get(count).add(file);
 				count++;
@@ -81,8 +79,7 @@ public class Searcher {
 		for (final List<File> fileList : hashedFiles.values()) {
 			processedFiles += fileList.size();
 		}
-		SimpleLogger
-				.info(MessageFormat.format("Processed {0} hashes for {1} files.", hashedFiles.size(), processedFiles));
+		SimpleLogger.info(MessageFormat.format("Processed {0} hashes for {1} files.", hashedFiles.size(), processedFiles));
 
 		SimpleLogger.info("Generating output...");
 		final String[] cols = new String[] { "Hash", "Files" };
@@ -100,7 +97,7 @@ public class Searcher {
 		try {
 			SpreadSheet.createEmpty(tableModel).saveAs(spreadsheetFile);
 		} catch (final IOException e) {
-			e.printStackTrace();
+			SimpleLogger.error("Error while creating .odt file.", e);
 		}
 		SimpleLogger.info("Done.");
 	}

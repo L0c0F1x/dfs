@@ -30,8 +30,7 @@ public class ShaHashCalculator implements HashCalculator {
 		try {
 			digest = MessageDigest.getInstance("SHA-256");
 		} catch (final NoSuchAlgorithmException e) {
-			SimpleLogger.error(MessageFormat.format("Error while calculating the hash of {0}: {1}", file,
-					e.getLocalizedMessage()));
+			SimpleLogger.error(MessageFormat.format("Error while calculating the hash of {0}: {1}", file, e.getLocalizedMessage()));
 
 			return null;
 		}
@@ -40,17 +39,14 @@ public class ShaHashCalculator implements HashCalculator {
 			return null;
 		}
 
-		try (final FileInputStream fis = new FileInputStream(file);
-				final BufferedInputStream bis = new BufferedInputStream(fis);
-				final DigestInputStream dis = new DigestInputStream(bis, digest)) {
+		try (final FileInputStream fis = new FileInputStream(file); final BufferedInputStream bis = new BufferedInputStream(fis); final DigestInputStream dis = new DigestInputStream(bis, digest)) {
 			final byte[] buffer = new byte[BUFF_SIZE];
 
 			while (dis.read(buffer, 0, BUFF_SIZE) != -1) {
 				// Nothing to do here
 			}
 		} catch (final IOException e) {
-			SimpleLogger.error(MessageFormat.format("Error while calculating the hash of {0}: {1}", file,
-					e.getLocalizedMessage()));
+			SimpleLogger.error(MessageFormat.format("Error while calculating the hash of {0}: {1}", file, e.getLocalizedMessage()));
 
 			return null;
 		}

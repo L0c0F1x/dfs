@@ -6,6 +6,7 @@ import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
+import java.util.Collections;
 import java.util.List;
 import java.util.SortedMap;
 
@@ -27,10 +28,9 @@ public class FileListerImpl implements FileLister {
 
 			return ((AbsoluteFilePathVisitor) visitor).getFilePathList();
 		} catch (final IOException e) {
-			SimpleLogger.error(MessageFormat.format("Error while walking the file tree rooted at {0}: {1}",
-					root.getAbsolutePath(), e.getLocalizedMessage()), e);
+			SimpleLogger.error(MessageFormat.format("Error while walking the file tree rooted at {0}: {1}", root.getAbsolutePath(), e.getLocalizedMessage()), e);
 
-			return null;
+			return Collections.emptyList();
 		}
 	}
 
@@ -44,10 +44,9 @@ public class FileListerImpl implements FileLister {
 
 			return ((SortedFileSizeVisitor) visitor).getSortedFileMap();
 		} catch (final IOException e) {
-			SimpleLogger.error(MessageFormat.format("Error while walking the file tree rooted at {0}: {1}",
-					root.getAbsolutePath(), e.getLocalizedMessage()), e);
+			SimpleLogger.error(MessageFormat.format("Error while walking the file tree rooted at {0}: {1}", root.getAbsolutePath(), e.getLocalizedMessage()), e);
 
-			return null;
+			return Collections.emptySortedMap();
 		}
 	}
 

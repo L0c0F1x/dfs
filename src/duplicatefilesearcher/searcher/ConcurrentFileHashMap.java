@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -29,7 +30,7 @@ public enum ConcurrentFileHashMap {
 		if (blocking) {
 			this.lock.lock();
 			try {
-				putHashes(hashes);
+				this.putHashes(hashes);
 				return true;
 			} finally {
 				this.lock.unlock();
@@ -38,7 +39,7 @@ public enum ConcurrentFileHashMap {
 
 		if (this.lock.tryLock()) {
 			try {
-				putHashes(hashes);
+				this.putHashes(hashes);
 				return true;
 			} finally {
 				this.lock.unlock();
@@ -59,12 +60,14 @@ public enum ConcurrentFileHashMap {
 	 * @param hashes
 	 */
 	private void putHashes(final Map<String, List<File>> hashes) {
-		for (final String hash : hashes.keySet()) {
+		for (final Entry<String, List<File>> entry : hashes.entrySet()) {
+			final String hash = entry.getKey();
+
 			if (!this.fileHashes.containsKey(hash)) {
 				this.fileHashes.put(hash, new ArrayList<>());
 			}
 
-			for (final File file : hashes.get(hash)) {
+			for (final File file : entry.getValue()) {
 				this.fileHashes.get(hash).add(file);
 			}
 		}

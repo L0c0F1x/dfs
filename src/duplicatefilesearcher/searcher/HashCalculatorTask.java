@@ -50,14 +50,11 @@ public class HashCalculatorTask implements Callable<Void> {
 			this.temporaryHashes.get(hash).add(file);
 			processedFileCount++;
 
-			if (processedFileCount >= BATCH_SIZE) {
-				if (this.calculatedHashes.putHashes(this.temporaryHashes, false)) {
-					SimpleLogger.info(MessageFormat.format("{0} processed {1} files.", Thread.currentThread().getName(),
-							processedFileCount));
+			if ((processedFileCount >= BATCH_SIZE) && this.calculatedHashes.putHashes(this.temporaryHashes, false)) {
+				SimpleLogger.info(MessageFormat.format("{0} processed {1} files.", Thread.currentThread().getName(), processedFileCount));
 
-					this.temporaryHashes.clear();
-					processedFileCount = 0;
-				}
+				this.temporaryHashes.clear();
+				processedFileCount = 0;
 			}
 		}
 
