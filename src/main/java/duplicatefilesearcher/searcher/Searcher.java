@@ -28,7 +28,7 @@ import duplicatefilesearcher.utils.SimpleLogger;
  */
 public class Searcher {
 
-	private static final String	ROOT_PATH	= "/";
+	private static final String	ROOT_PATH	= "./";
 	private static final int	THREADS		= 4;
 
 	/**
