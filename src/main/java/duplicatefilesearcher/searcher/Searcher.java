@@ -97,7 +97,7 @@ public class Searcher {
 		try {
 			SpreadSheet.createEmpty(tableModel).saveAs(spreadsheetFile);
 		} catch (final IOException e) {
-			SimpleLogger.error("Error while creating .odt file.", e);
+			SimpleLogger.error("Error while creating .ods file.", e);
 		}
 		SimpleLogger.info("Done.");
 	}
