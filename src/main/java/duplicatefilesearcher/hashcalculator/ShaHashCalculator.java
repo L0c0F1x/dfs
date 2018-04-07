@@ -14,6 +14,8 @@ import javax.xml.bind.DatatypeConverter;
 import duplicatefilesearcher.utils.SimpleLogger;
 
 /**
+ * A HashCalculator implementation using SHA-256
+ *
  * @author L0c0F1x
  *
  */

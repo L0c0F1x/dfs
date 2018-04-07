@@ -23,6 +23,8 @@ import duplicatefilesearcher.lister.FileListerImpl;
 import duplicatefilesearcher.utils.SimpleLogger;
 
 /**
+ * Main class executing the search for duplicate files.
+ *
  * @author L0c0F1x
  *
  */
