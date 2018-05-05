@@ -17,7 +17,7 @@ public final class SimpleLogger {
 	 * @param msg
 	 */
 	public static void info(final String msg) {
-		System.out.println(MessageFormat.format("{0} INFO: {1}", new Date(), msg));
+		System.out.println(MessageFormat.format("{0, date, dd.MM.yyyy HH:mm:ss} INFO: {1}", new Date(), msg));
 	}
 
 	/**
@@ -33,7 +33,7 @@ public final class SimpleLogger {
 	 * @param msg
 	 */
 	public static void warn(final String msg) {
-		System.out.print(MessageFormat.format("{0} WARNING: {1}", new Date(), msg));
+		System.out.print(MessageFormat.format("{0, date, dd.MM.yyyy HH:mm:ss} WARNING: {1}", new Date(), msg));
 	}
 
 	/**
@@ -49,7 +49,7 @@ public final class SimpleLogger {
 	 * @param msg
 	 */
 	public static void error(final String msg) {
-		System.err.println(MessageFormat.format("{0} ERROR: {1}", new Date(), msg));
+		System.err.println(MessageFormat.format("{0, date, dd.MM.yyyy HH:mm:ss} ERROR: {1}", new Date(), msg));
 	}
 
 	/**
