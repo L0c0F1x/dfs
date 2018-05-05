@@ -1,4 +1,4 @@
-# Based on https://www.gitignore.io/api/eclipse
+# Based on https://www.gitignore.io/api/maven,eclipse
 
 ### Eclipse ###
 
@@ -27,5 +27,19 @@ local.properties
 # JDT-specific (Eclipse Java Development Tools)		
 .classpath
 
-# Maven-specific
-/target/
+# Annotation Processing
+.apt_generated
+
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
